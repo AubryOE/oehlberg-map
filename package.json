@@ -3,12 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "ajv": "^6.0.0",
     "by": "^0.2.3",
     "escape-string-regexp": "^1.0.5",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
     "react-scripts": "2.0.4",
-    "sort": "0.0.3"
+    "sort": "0.0.3",
+    "sort-by": "^1.2.0"
   },
   "scripts": {
     "start": "react-scripts start",
