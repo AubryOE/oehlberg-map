@@ -84,7 +84,7 @@ class DisplayMap extends Component {
 
 		  return (
 
-		  	<main id="maincontent">
+		  	<main id="main-content">
 				<div id="map">
 
 

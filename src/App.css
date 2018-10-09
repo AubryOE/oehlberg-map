@@ -4,20 +4,18 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 .App {
   text-align: center;
-}
+    position: relative;
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
 }
 
 .App-header {
   background-color: #282c34;
-  min-height: 15vh;
+  min-height: 13vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,20 +28,109 @@ body {
   color: #61dafb;
 }
 
-#map {
-  width: 100%;
-  height: 100vh;
+.main-section {
+  height: 100%;
+
+  display: flex;
+  flex: wrap;
+  overflow: hidden;
 }
 
+.page-title {
+  color: #E1B61D;
+}
 
-.search-list{
+#map {
+  width: 58%;
+  height: 100vh;
+
+  position: absolute;
+  right: 0px;
+}
+
+#search-list {
   background: #fff;
   border: 1px solid #999;
   border-radius: 3px;
-  height: 100%;
+  /*height: 100%;*/
+  height: 100vh;
   line-height: 35px;
   padding: 10px 10px 30px 10px;
   text-align: left;
   max-width: 100%;
-  width: 340px;
+  width: 260px;
+  /*width: 35%;*/
+  margin: 0 0.25em 0 0;
+  z-index: 5;
+  align-content: left;
+}
+
+#search {
+  margin: 0.5em;
+}
+
+.list-items {
+  border: 1px solid;
+  margin: 0.5em;
+}
+
+.brewery-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.list-title {
+  text-align: center;
+}
+
+.nav-menu {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  padding: 1em;
+}
+
+.nav-menu svg {
+  width: 30px;
+  fill: #E1B61D;
+}
+
+@media screen and (max-width: 425px) {
+  .page-title {
+    font-size: 0.9em;
+  }
+
+  input {
+    width: 60%;
+  }
+
+  #search-list {
+    width: 100%;
+    max-width: 100%;
+    height: 80%;
+
+    position: relative;
+    z-index: 1;
+  }
+
+  #map {
+    width: 100%;
+    max-width: 100%;
+    height: 80%;
+
+    z-index: 1;
+    position: relative;
+
+  }
+
+  .brewery-list {
+    width: 100%;
+    margin: 0;
+  }
+
+  .list-items {
+    width: 95%;
+  }
+
 }

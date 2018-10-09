@@ -3,9 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "by": "^0.2.3",
+    "escape-string-regexp": "^1.0.5",
     "react": "^16.5.2",
     "react-dom": "^16.5.2",
-    "react-scripts": "2.0.4"
+    "react-scripts": "2.0.4",
+    "sort": "0.0.3"
   },
   "scripts": {
     "start": "react-scripts start",
