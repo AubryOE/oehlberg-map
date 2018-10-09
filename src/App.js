@@ -24,7 +24,7 @@ class MapApp extends Component {
           <h1 className='page-title'>
             Neighborhood Map
           </h1>
-          <a id="menu" class="nav-menu">
+          <a id="menu" className="nav-menu">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
             </svg>
