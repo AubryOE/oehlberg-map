@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import DisplayMap from './DisplayMap'
 import SearchList from './SearchList'
 import './App.css';
+import SquareAPI from './PlacesAPI'
 
 class MapApp extends Component {
   state = {
@@ -11,10 +12,48 @@ class MapApp extends Component {
     {id: 'k49pgk', title: 'Cabin Boys', location: {lat: 36.151678, lng: -95.966637}},
     {id: 'j34uid', title: 'American Solera', location: {lat: 36.137874, lng: -96.046642}},
     {id: 'wi793j', title: 'Marshall Brewing Company', location: {lat: 36.152043, lng: -95.965516}}
-    ]
+    ],
+
+    showMenu: true,
+    markers: []
   }
 
+  componentDidMount(){
+    SquareAPI.search({
+      near: 'Tulsa, OK',
+      query: 'brew',
+      limit: 2
+    }).then(results => {
+      console.log(results);
+      for(let i = 0; i < results.response.venues.length; i++) {
+        if(results.response.venues[i].location.formattedAddress) {
+          console.log(results.response.venues[i].location.formattedAddress)
+        } else {
+          console.log('No results found')
+        }
+      }
+    })
+  }
 
+  changeMenu = (showMenu) => {
+    console.log('button clicked');
+    console.log(this.state.showMenu);
+    this.setState(state => ({showMenu: !state.showMenu}))
+    console.log(this.state);
+
+    /*let hide = document.getElementById('search-list');
+    hide.setState({class: 'hide-list'});*/
+  }
+
+  displayListMarkers = (markerArray) => {
+
+
+      this.setState( {
+        markers: markerArray
+      })
+      console.log(this.state.markers)
+      console.log('li clicked');
+    }
 
   //Hamburger menu based on code provided by Udacity for Hometown App, Part 3
   render() {
@@ -24,18 +63,24 @@ class MapApp extends Component {
           <h1 className='page-title'>
             Neighborhood Map
           </h1>
-          <a id="menu" className="nav-menu">
+          <a onClick={this.changeMenu} id='menu' className='nav-menu'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
             </svg>
           </a>
         </nav>
             <div className='main-section'>
+                {this.state.showMenu ? 
                 <SearchList
                   brewery={this.state.locationList}
-                />
+                  showMenu={this.state.showMenu}
+                  markers={this.state.markers}
+                  displayListMarkers={this.displayListMarkers}
+                /> : null}
                 <DisplayMap
                   brewery={this.state.locationList}
+                  markers={this.state.markers}
+                  displayListMarkers={this.displayListMarkers}
                 />
             </div>
 
