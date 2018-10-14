@@ -50,7 +50,7 @@ class SearchList extends Component {
 
 					<ol className='brewery-list'>
 						{locations.map((breweries) => 
-							<li tabIndex='0' onClick={this.displayListMarker} className='list-items' key={breweries.id}>
+							<li tabIndex='0' onClick={this.displayListMarker} onKeyPress={this.props.handleKeyPress} className='list-items' key={breweries.id}>
 								<div className='list-details'>
 									<p className='list-title'>{breweries.title}</p>
 								</div>

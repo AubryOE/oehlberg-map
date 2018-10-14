@@ -157,9 +157,15 @@ class MapApp extends Component {
     console.log(this.state.showMenu);
     this.setState(state => ({showMenu: !state.showMenu}))
   }
+  //Code based on stackoverflow post: (https://stackoverflow.com/questions/27827234/reactjs-onkeypress-event-handling)
+  handleKeyPress = (event) => {
+    if(event.key === 'Enter'){
+      console.log('enter key pressed')
+      this.changeMenu()
+    }
+  }
 
   //Hamburger menu based on code provided by Udacity for Hometown App, Part 3
-  //TODO: Update hamburger menu so that user can toggle search list by hitting enter key 
   render() {
     return (
       <div className="App">
@@ -167,7 +173,7 @@ class MapApp extends Component {
           <h1 className='page-title'>
             Neighborhood Map
           </h1>
-          <a tabIndex='0' onClick={this.changeMenu} id='menu' className='nav-menu'>
+          <a tabIndex='0' onClick={this.changeMenu} onKeyPress={this.handleKeyPress} id='menu' className='nav-menu'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
             </svg>
@@ -186,6 +192,7 @@ class MapApp extends Component {
                     createInfoWindow={this.createInfoWindow}
                     filterMarkers={this.filterMarkers}
                     filteredMarkers={this.state.filteredMarkers}
+                    handleKeyPress={this.handleKeyPress}
                   /> : null}
                 {/*<DisplayMap
                   brewery={this.state.locationList}
