@@ -116,7 +116,7 @@ class MapApp extends Component {
       console.log(marker.title);
     })
     //TODO: Fix: this.state.filteredMarkers.setvisible is not a function
-    /*if(query) {
+    if(query) {
         //const matching = new RegExp(escapeRegExp(query), 'i')
         //filteredMarkers = showingMarkers.filter((brewery) => matching.test(brewery.title))
         this.setState({filteredMarkers: query})
@@ -125,11 +125,11 @@ class MapApp extends Component {
         this.setState({filteredMarkers: showingMarkers})
         //this.statefilteredMarkers.setvisible(false)
       }
-      //this.createInfoWindow(filteredMarkers)*/
-  
+      //this.createInfoWindow(filteredMarkers)
+  }
   //TODO: Fix error: showingMarkers.filter is not a function
   //Code based on Neighborhood Map Walkthrough tutorial by Ryan Waite (https://www.youtube.com/watch?v=LvQe7xrUh7I&t=3837s&index=6&list=PLKC17wty6rS1XVZbRlWjYU0WVsIoJyO3s)
-    let newFilteredMarkers = query ? showingMarkers.filter((location) => location.title.toLowerCase().includes(query.toLowerCase)) : showingMarkers
+    /*let newFilteredMarkers = query ? showingMarkers.filter((location) => location.title.toLowerCase().includes(query.toLowerCase)) : showingMarkers
       this.setState({filteredMarkers: query})
       newFilteredMarkers.forEach(anotherMarker => {
         anotherMarker.toLowerCase().includes(query.toLowerCase) ?
@@ -137,7 +137,7 @@ class MapApp extends Component {
         anotherMarker.setvisible(false);
       })
       this.setState({filteredMarkers: newFilteredMarkers})
-  }
+  }*/
   
   createInfoWindow = (marker, infowindow, map) => {
     // Check whether info window is already open.
@@ -159,6 +159,7 @@ class MapApp extends Component {
   }
 
   //Hamburger menu based on code provided by Udacity for Hometown App, Part 3
+  //TODO: Update hamburger menu so that user can toggle search list by hitting enter key 
   render() {
     return (
       <div className="App">
@@ -166,7 +167,7 @@ class MapApp extends Component {
           <h1 className='page-title'>
             Neighborhood Map
           </h1>
-          <a tabindex='0' onClick={this.changeMenu} id='menu' className='nav-menu'>
+          <a tabIndex='0' onClick={this.changeMenu} id='menu' className='nav-menu'>
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path d="M2 6h20v3H2zm0 5h20v3H2zm0 5h20v3H2z"/>
             </svg>
@@ -174,7 +175,7 @@ class MapApp extends Component {
         </nav>
         {JSON.stringify(this.state)}
             <main className='main-section'>
-                <div id="map">
+                <div id="map" tabIndex='-1'>
                 </div>
                 {this.state.showMenu ? 
                   <SearchList
