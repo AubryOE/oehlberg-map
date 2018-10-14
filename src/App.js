@@ -22,7 +22,7 @@ class MapApp extends Component {
 
   //TODO: add promise?
   showMap = () => {
-    getScript('https://maps.googleapis.com/maps/api/js?key=AIzaSyDAMIaWZMd5wXulNg3v4XO61Oc1tQbNdPg&v=3&callback=initMap')
+    getScript('https://maps.googleapis.com/maps/api/js?key={APIkeyHere}&v=3&callback=initMap')
     //from tutorial 
     window.initMap = this.initMap
   }
@@ -49,7 +49,7 @@ class MapApp extends Component {
   initMap = () => {
         let map = new window.google.maps.Map(document.getElementById('map'), {
           center: {lat: 36.147020, lng: -96.002110},
-          zoom: 12,
+          zoom: 8,
           mapTypeControl: false
       })
         this.createMarkers(map)
@@ -160,7 +160,7 @@ class MapApp extends Component {
   //Code based on stackoverflow post: (https://stackoverflow.com/questions/27827234/reactjs-onkeypress-event-handling)
   handleKeyPress = (event) => {
     if(event.key === 'Enter'){
-      console.log('enter key pressed')
+      console.log('Enter key pressed')
       this.changeMenu()
     }
   }
